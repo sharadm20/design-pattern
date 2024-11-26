@@ -2,11 +2,16 @@ package command;
 
 public class Stereo {
 	private int volume;
-	public void on() {
-		System.out.println("Stereo on");
+	private String name;
+	public Stereo(String string) {
+        //TODO Auto-generated constructor stub
+		this.name = string;
+    }
+    public void on() {
+		System.out.println(name +" Stereo on");
 	}
 	public void off(){
-		System.out.println("Stereo off");
+		System.out.println(name+" Stereo off");
 	}
 	public void setCD(){}
 	public void setDvd(){}

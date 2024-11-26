@@ -3,6 +3,7 @@ package command;
 public class RemoteControl {
 	private Command[] onCommand;
 	private Command[] offCommand;
+	private Command undoCommand;
 	public RemoteControl() {
 		this.onCommand = new Command[7];
 		this.offCommand = new Command[7];
@@ -11,16 +12,22 @@ public class RemoteControl {
 			this.onCommand[i] = noty;
 			this.offCommand[i] = noty;
 		}
+		this.undoCommand = noty;
 	}
 	public void setCommand(int slot, Command onCommand, Command offCommand) {
 		this.onCommand[slot] = onCommand;
 		this.offCommand[slot] = offCommand;
 	}
-	public void onButtonWasPressed(int slot) {
+	public void onButtonWasPushed(int slot) {
 		this.onCommand[slot].execute();
+		this.undoCommand = this.onCommand[slot];
 	}
-	public void offButtonWasPressed(int slot) {
+	public void offButtonWasPushed(int slot) {
 		this.offCommand[slot].execute();
+		this.undoCommand = this.offCommand[slot];
+	}
+	public void undoButtonWasPushed(){
+		this.undoCommand.undo();
 	}
 	public String toString() {
 		StringBuffer stringBuff = new StringBuffer();

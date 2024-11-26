@@ -2,14 +2,16 @@ package command;
 
 public class GarageDoorOpenCommand
 implements Command {
-	GarageDoor door;
+	GarageDoor garageDoor;
 	GarageDoorOpenCommand(GarageDoor door){
-		this.door = door;
+		this.garageDoor = door;
 	}
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
-		door.up();
+		garageDoor.up();
+	}
+	public void undo(){
+		this.garageDoor.down();
 	}
 
 }
